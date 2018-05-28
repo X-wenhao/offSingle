@@ -1,0 +1,19 @@
+GET /api/V1.1/predict/get_num
+return 
+{
+    number:int
+}
+
+POST /api/V1.1/predict/pre_result?name=&gender=&age=
+return
+{
+    time:str,
+    location:str,
+    person:str
+}
+
+POST /api/V1.1/mail
+{
+    address:str,
+    content:str
+}

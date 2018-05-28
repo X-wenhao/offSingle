@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="description" content="h5小游戏">
+    <meta name="keywords" content="11.11脱单作战">
+    <meta name="author" content="佳佳">
+    <title>快来领取对象走向人生巅峰!</title>
+    <script>
+        (function setFontSize () {
+            //动态改变根节点字体大小
+            var docEle = document.documentElement,
+                    evt = "onorientationchange" in window ? "orientationchange" : "resize",
+                    fn = function() {
+                        var width = docEle.clientWidth;
+                        var height = docEle.clientHeight;
+                        var scale = (width / height) / (750 / 1334);
+                        width && (docEle.style.fontSize = width / (3.75 * scale) + "px");
+                    };
+            window.addEventListener(evt, fn, false);
+            document.addEventListener("DOMContentLoaded", fn, false);
+        })();
+    </script>
+    <link rel="stylesheet" href="./static/css/main.min.css">
+</head>
+<body>
+<div class="loading-page">
+    <div class="loader">
+        <div class="loader-inner line-scale">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+<!-- 首页 -->
+<div class="first-page">
+    <div class="first-page-stars">
+        <!-- 浅色星星 -->
+        <div class="first-page-star-light1"><img src="./static/pic/star_light.png" alt="light-star"></div>
+        <div class="first-page-star-light2"><img src="./static/pic/star_light.png" alt="light-star"></div>
+        <div class="first-page-star-light3"><img src="./static/pic/star_light.png" alt="light-star"></div>
+        <div class="first-page-star-light4"><img src="./static/pic/star_light.png" alt="light-star"></div>
+        <div class="first-page-star-light5"><img src="./static/pic/star_light.png" alt="light-star"></div>
+        <!-- 深色星星 -->
+        <div class="first-page-star-dark1"><img src="./static/pic/star_dark.png" alt="dark-star"></div>
+        <div class="first-page-star-dark2"><img src="./static/pic/star_dark.png" alt="dark-star"></div>
+        <div class="first-page-star-dark3"><img src="./static/pic/star_dark.png" alt="dark-star"></div>
+        <div class="first-page-star-dark4"><img src="./static/pic/star_dark.png" alt="dark-star"></div>
+        <div class="first-page-star-dark5"><img src="./static/pic/star_dark.png" alt="dark-star"></div>
+        <div class="first-page-star-dark6"><img src="./static/pic/star_dark.png" alt="dark-star"></div>
+    </div>
+    <!-- 包含星星和标题 -->
+    <div class="first-page-heart-container">
+        <div class="first-page-heart1"><img src="./static/pic/heart.png" alt="heart" onload="this.style.display='block'" style="display: none;"></div>
+        <div class="first-page-heart2"><img src="./static/pic/heart.png" alt="heart" onload="this.style.display='block'" style="display: none;"></div>
+        <div class="first-page-heart3"><img src="./static/pic/heart.png" alt="heart" onload="this.style.display='block'" style="display: none;"></div>
+        <div class="first-page-title">月老脱单工作室</div>
+    </div>
+    <div class="first-page-office">
+        <img src="./static/pic/first_page_house.png" alt="matchmaker_house" onload="this.style.display='block'">
+    </div>
+    <div class="first-page-button">摇号脱单</div>
+    <div class="first-page-info">有缘人，快来领取你的对象吧</div>
+</div>
+<!-- 信息填写页面 -->
+<div class="info-page">
+    <div class="info-page-back">&#60;</div>        
+    <div class="info-page-alert-container">
+        <!-- 信息填写错误弹框 -->
+        <div class="info-page-alert">
+            <div class="info-alert">
+                <div class="info-message">请填写完整信息！</div>
+                <div class="info-buttons">
+                    <div class="info-sure">确认</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="info-page-container">
+        <div class="info-page-form">
+            <div class="info-page-title">姻缘卡</div>
+            <div class="info-page-blocks">
+                <div class="info-page-name">
+                    <label for="name">姓名:</label>
+                    <input type="text" id="name" autocomplete="false" spellcheck="false" minlength="1">
+                    <div class="info-page-bottomline"></div>
+                </div>
+                <div class="info-page-sex">
+                    <label for="sex">性别:</label>
+                    <ul class="info-page-sex-radios">
+                        <li><input type="radio" name="radio-btn" value="男"/>男</li>
+                        <li><input type="radio" name="radio-btn" value="女"/>女</li>
+                    </ul>
+                </div>
+                <div class="info-page-age">
+                    <label for="age">年龄:</label>
+                    <input type="text" id="age" autocomplete="false" spellcheck="false" minlength="1">
+                    <div class="info-page-bottomline"></div>
+                </div>
+            </div>
+            <div class="info-page-submit">确认</div>
+        </div>
+    </div>
+</div>
+<!-- 信息展示页面 -->
+<div class="result-page">
+    <div class="result-page-screenshot">
+        <div class="result-page-title">对象领取凭条</div>
+        <div class="result-page-index">NO.<span></span></div>
+        <!-- 信息展示栏，也是需要保存出来的区域 -->
+        <div class="result-page-container-container">
+            <div class="result-page-container">        
+                <div class="result-page-seal">
+                    <img src="./static/pic/result_page_seal.png" alt="matchmaker_seal">
+                </div>
+                <div class="result-page-name">姓名:<span></span></div>
+                <div class="result-page-sex">性别:<span></span></div>
+                <div class="result-page-age">年龄:<span></span></div>
+                <div class="result-page-number">摇号号码:<span></span></div>
+                <div class="result-page-time">领取时间:<span>2017年</span></div>
+                <div class="result-page-location">领取地点:<span></span></div>
+                <!-- 领取对象 -->
+                <div class="result-page-other">
+                    <div class="other-lover">
+                        <div class="other-left-block">
+                            <div class="other-left-block-title">领取对象:</div>
+                            <div class="other-left-code">
+                                 <img src="./static/ORCode.png" alt="codeImg"> 
+                            </div>
+                        </div>
+                        <div class="other-right-block"></div>
+                    </div>
+                    <div class="other-offical">负责单位：月老脱单工作室</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="result-page-saveInfo"><a>长按保存图片</a></div>
+    <div class="result-page-button">发送告白密函</div>
+</div>
+<!-- 发送密函页面 -->
+<div class="letter-page">
+    <div class="letter-page-back">&#60;</div>  
+    <!-- 一些验证框 -->
+    <div class="letter-page-alert-container">
+        <div class="letter-page-alert">
+            <!-- 弹窗确认是否离开 -->
+            <div class="leave-alert">
+                <div class="leave-message">返回后，所编辑内容不被保存</div>
+                <div class="leave-buttons">
+                    <div class="leave-sure">确认</div>
+                    <div class="leave-cancel">取消</div>
+                </div>
+            </div>
+            <!-- 弹窗-邮箱输入（前端后台验证）错误-邮箱或者信件没有填写-确认投递成功 -->
+            <div class="confirm-alert">
+                <div class="confirm-message">你的告白密函投递成功！</div>
+                <div class="confirm-buttons">
+                    <div class="confirm-sure">确认</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 填写信件区域 -->
+    <div class="letter-page-container animated bounceInDown">
+        <!-- 左右爱心 -->
+        <div class="letter-page-heart-left">
+            <img src="./static/pic/letter_page_heart.png" alt="heart">
+        </div>
+        <div class="letter-page-heart-right">
+            <img src="./static/pic/letter_page_heart.png" alt="heart">
+        </div>
+        <!-- 邮箱填写和信件填写 -->
+        <div class="letter-page-email-write">
+            <label for="email">邮箱:</label>
+            <input type="text" id="email" autocomplete="off" spellcheck="false">
+        </div>
+        <textarea name="contentArea" class="letter-page-content-write" spellcheck="false" autocomplete="false"></textarea>
+        <div class="letter-page-submit-block">
+            <div class="letter-page-submit-button">发 送</div>
+        </div>
+    </div>
+    <!-- 爱心矢量箭头 -->
+    <div class="letter-page-arrow animated2 bounceInLeft">
+        <img src="./static/pic/letter_page_arrow.png" alt="arrow">
+    </div>
+</div>
+<!-- 过渡页面 -->
+<div class="transition-page">
+    <!-- 背景块 -->
+    <div class="transition-page-top"></div>
+    <div class="transition-page-bottom"></div>
+    <!-- 电脑图片 -->
+    <div class="transition-page-computer">
+        <div class="computer-top">
+            <div class="computer-top-explain"></div>
+        </div>
+        <div class="computer-middle"></div>
+        <div class="computer-bottom"></div>
+    </div>
+    <!-- 键盘图片 -->
+    <div class="transition-page-keyboard">
+        <div class="keyboard-top">
+            <div class="keyboard-keys-container">
+            <div class="keyboard-keys"></div>
+            <div class="keyboard-keys"></div>
+            <div class="keyboard-keys"></div>
+            <div class="keyboard-keys"></div>
+            <div class="keyboard-keys"></div>
+            <div class="keyboard-keys"></div>
+            </div>
+        </div>
+        <div class="keyboard-side"></div>
+    </div>
+    <div class="computer-top-next"></div>
+    <!-- 翻页指示 -->
+    <div class="transition-page-guideBar">
+        <div class="guideBar-last">
+            <img src="./static/pic/transition_page_arrow.png" alt="last_page">
+            <span>上一步</span>
+        </div>
+        <div class="guideBar-next">
+            <img src="./static/pic/transition_page_arrow.png" alt="next_page">
+            <span>下一步</span>
+        </div>
+    </div>
+    <div class="transition-page-block"></div>
+</div>
+<!-- 摇号页面 -->
+<div class="game-page">
+    <!-- 背景块 -->
+    <div class="transition-page-top"></div>
+    <div class="transition-page-bottom"></div>
+    <!-- 摇号机 -->
+    <div class="game-page-macontainer">
+        <div class="game-page-machine">
+            <div class="machine-block1">
+                <div class="number-block1">
+                    <div class="num-line1">0</div>
+                    <div class="num-line1">1</div>
+                    <div class="num-line1">2</div>
+                    <div class="num-line1">3</div>
+                    <div class="num-line1">4</div>
+                    <div class="num-line1">5</div>
+                    <div class="num-line1">6</div>
+                    <div class="num-line1">7</div>
+                    <div class="num-line1">8</div>
+                    <div class="num-line1">9</div>
+                </div>
+                <div class="number-show1"></div>
+            </div>
+            <div class="machine-block2">
+                <div class="number-block2">
+                    <div class="num-line2">0</div>
+                    <div class="num-line2">1</div>
+                    <div class="num-line2">2</div>
+                    <div class="num-line2">3</div>
+                    <div class="num-line2">4</div>
+                    <div class="num-line2">5</div>
+                    <div class="num-line2">6</div>
+                    <div class="num-line2">7</div>
+                    <div class="num-line2">8</div>
+                    <div class="num-line2">9</div>
+                </div>
+                <div class="number-show2"></div>
+            </div>
+            <div class="machine-block3">
+                <div class="number-block3">
+                    <div class="num-line3">0</div>
+                    <div class="num-line3">1</div>
+                    <div class="num-line3">2</div>
+                    <div class="num-line3">3</div>
+                    <div class="num-line3">4</div>
+                    <div class="num-line3">5</div>
+                    <div class="num-line3">6</div>
+                    <div class="num-line3">7</div>
+                    <div class="num-line3">8</div>
+                    <div class="num-line3">9</div>
+                </div>
+                <div class="number-show3"></div>
+            </div>
+            <div class="machine-block4">
+                <div class="number-block4">
+                    <div class="num-line4">0</div>
+                    <div class="num-line4">1</div>
+                    <div class="num-line4">2</div>
+                    <div class="num-line4">3</div>
+                    <div class="num-line4">4</div>
+                    <div class="num-line4">5</div>
+                    <div class="num-line4">6</div>
+                    <div class="num-line4">7</div>
+                    <div class="num-line4">8</div>
+                    <div class="num-line4">9</div>
+                </div>
+                <div class="number-show4"></div>
+            </div>
+        </div>
+        <div class="game-page-stick">
+            <img src="./static/pic/game_page_base.png" alt="base">
+            <img src="./static/pic/game_page_stick .png" alt="stick">
+        </div>
+    </div>
+    <!-- 提示部分 -->
+    <div class="game-page-guide">请拉动摇杆开始/暂停摇号<br />(只有一次机会哦~)</div>
+    <div class="game-page-bar">
+        <div class="gameBar-last">
+            <img src="./static/pic/transition_page_arrow.png" alt="last_page">
+            <span>上一步</span>
+        </div>
+        <div class="gameBar-next">
+            <img src="./static/pic/transition_page_arrow.png" alt="next_page">
+            <span>下一步</span>
+        </div>
+    </div>
+    <div class="game-page-block"></div>
+</div>
+<script src="./static/js/jquery.js"></script>
+<script src="./static/js/index.js"></script>
+<script src="./static/js/html2canvas.js"></script>
+</body>
+</html>
